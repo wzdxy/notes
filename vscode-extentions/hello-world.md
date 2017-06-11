@@ -3,7 +3,7 @@
 
 ```
 npm install -g yo generator-code
-yo code //choose New Extension(JavaScript)
+yo code //choose New Extension(TypeScript)
 ```
 
 ## 运行
