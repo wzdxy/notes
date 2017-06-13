@@ -158,3 +158,20 @@ context.subscriptions.push(wordCounter);
 `onLanguage:${language}` 事件获取一个语言 ID, 比如 `markdown`, 这个事件会在这种语言类型的文件打开时触发.
 
 调试插件, 并打开一个 Markdown 文件, 就可以看到一个实时的单词统计了.
+
+## 自定义的状态栏
+
+现在我们已经知道了如何在状态栏上显示格式化的数据, VS Code 允许你使用图标, 颜色, 工具提示等更进一步地定制化你的状态栏. 使用智能感知, 你可以看到各种各样的状态栏区域. 另一个很好的了解VS Code 的 API 的途径是 `vscode.d.ts` 类型声明文件, 它就包含在你生成的项目中, 打开 `node_modules\vscode\vscode.d.ts` , 你可以看到完整的带有注释的 VS Code 扩展 API.
+
+使用下面的代码来替换, 就可以显示一个铅笔的图标
+```ts
+this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words` : '$(pencil) 1 Word';
+this._statusBarItem.show();
+```
+
+## 销毁扩展资源
+
+现在我们要通过销毁这一部分来更深入的了解扩展是如何处理 VS Code 的资源的.
+当一个扩展被激活, 他是通过一个含有 `subscriptions` 销毁集合的 `ExtensionContext` 类来实现 (?). 扩展可以添加一个销毁对象到集合中, 当插件失效的时候 VS Code 会销毁这些对象.
+很多创建工作区或 UI 对象的API 会返回一个 `Disposable` 对象, 扩展可以通过他们的销毁方法直接从 VS Code 移除这些元素.
+事件是另一个
