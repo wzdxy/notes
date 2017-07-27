@@ -12,4 +12,5 @@
  * [实例2](vscode-extentions/example-2.md)
 * [[译]修改Github用户名会有什么影响](change-github-username.md)
 * [互联网安全](web-security.md)
-  * [互联网安全](web-security/xss.md)
+  * [xss跨域脚本攻击](web-security/xss.md)
+  * [注入攻击](web-security/injection.md)
