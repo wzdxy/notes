@@ -1,4 +1,4 @@
-# vscode 扩展
+# vscode 扩展文档
 
 ## 简介
 扩展(Extensions)运行在扩展主进程中, 这个独立进程保证了 VS Code 一直保持快速响应.
