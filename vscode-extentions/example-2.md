@@ -173,5 +173,5 @@ this._statusBarItem.show();
 
 现在我们要通过销毁这一部分来更深入的了解扩展是如何处理 VS Code 的资源的.
 当一个扩展被激活, 他是通过一个含有 `subscriptions` 销毁集合的 `ExtensionContext` 类来实现 (?). 扩展可以添加一个销毁对象到集合中, 当插件失效的时候 VS Code 会销毁这些对象.
-很多创建工作区或 UI 对象的API 会返回一个 `Disposable` 对象, 扩展可以通过他们的销毁方法直接从 VS Code 移除这些元素.
-事件是另一个
+很多创建工作区或 UI 对象的API 会返回一个 `Disposable` 对象, 扩展可以通过他们的销毁方法直接从 VS Code 移除这些元素. 
+事件是另一个例子, 在 `onDid` 事件订阅方法返回一个 `Disposable` 对象的地方 . 扩展通过处理事件的 `Disposable` 对象来取消订阅一个事件. 在我们的示例中, `WordCountController` 直接处理事件订阅函数 , 通过
